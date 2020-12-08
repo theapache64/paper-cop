@@ -3,6 +3,7 @@ package com.theapache64.papercop.feature.base
 import android.content.Context
 import android.os.Bundle
 import android.os.Parcelable
+import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -42,12 +43,13 @@ abstract class BaseActivity<B : ViewDataBinding, VM : BaseViewModel>(
 
         // Watching for snackbar message
         viewModel.snackBarMsg.observe(this, Observer {
+            val root = getSnackBarRoot()
             when (it) {
                 is String -> {
-                    binding.root.snackBar(it)
+                    root.snackBar(it)
                 }
                 is Int -> {
-                    binding.root.snackBar(it)
+                    root.snackBar(it)
                 }
                 else -> throw IllegalArgumentException("snackBarMsg should be either Int or String")
             }
@@ -68,6 +70,8 @@ abstract class BaseActivity<B : ViewDataBinding, VM : BaseViewModel>(
 
         onCreate()
     }
+
+    open fun getSnackBarRoot(): View = binding.root
 
     fun isDebugActivity(): Boolean {
         return intent.getBooleanExtra(KEY_IS_DEBUG_ACTIVITY, false)

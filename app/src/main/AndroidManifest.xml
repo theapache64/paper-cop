@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PaperCop"
         tools:ignore="AllowBackup">
+
         <activity android:name=".feature.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,6 +20,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".feature.count.CountActivity"
+            android:exported="true" />
+
     </application>
 
 </manifest>

@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Paper Cop</string>
+    <string name="count_how_many">How many are there?</string>
+    <string name="count_error_message_min">You can\'t play this game with less than 3 people</string>
+    <string name="action_next">NEXT</string>
 </resources>

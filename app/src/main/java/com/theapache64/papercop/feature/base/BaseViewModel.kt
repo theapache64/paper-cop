@@ -10,7 +10,7 @@ import com.theapache64.papercop.utils.livedata.SingleLiveEvent
  */
 open class BaseViewModel : ViewModel() {
 
-    private val _snackBarMsg = SingleLiveEvent<Any>()
+    val _snackBarMsg = SingleLiveEvent<Any>()
     val snackBarMsg: LiveData<Any> = _snackBarMsg
 
     protected val _toastMsg = MutableLiveData<Any>()
