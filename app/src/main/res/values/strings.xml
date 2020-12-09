@@ -3,4 +3,8 @@
     <string name="count_how_many">How many are there?</string>
     <string name="count_error_message_min">You can\'t play this game with less than 3 people</string>
     <string name="action_next">NEXT</string>
+    <string name="input_names_name_them">What are their names ?</string>
+    <string name="input_names_error_empty">Name can\'t be empty</string>
+    <string name="input_names_error_duplicate">Name %s already exist</string>
+    <string name="input_names_error_name">Uh ho! It seems like there\'s an with the names</string>
 </resources>

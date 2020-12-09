@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/count_how_many"
-            android:textSize="35sp"
+            android:textSize="@dimen/title_text_size"
             app:layout_constraintBottom_toTopOf="@id/b_minus"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -71,7 +71,7 @@
             app:layout_constraintTop_toBottomOf="@id/tv_count"
             tools:ignore="HardcodedText" />
 
-        <!--Go-->
+        <!--Next-->
         <Button
             android:id="@+id/b_next"
             android:layout_width="0dp"
