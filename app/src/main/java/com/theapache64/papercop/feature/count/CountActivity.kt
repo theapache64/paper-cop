@@ -2,11 +2,13 @@ package com.theapache64.papercop.feature.count
 
 import android.content.Context
 import android.content.Intent
+import android.media.MediaPlayer
 import android.view.View
 import androidx.activity.viewModels
 import com.theapache64.papercop.R
 import com.theapache64.papercop.databinding.ActivityCountBinding
 import com.theapache64.papercop.feature.base.BaseActivity
+import com.theapache64.papercop.feature.names.InputNamesActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,6 +22,14 @@ class CountActivity : BaseActivity<ActivityCountBinding, CountViewModel>(R.layou
         }
     }
 
+    private val clickSound by lazy {
+        MediaPlayer.create(this, R.raw.click)
+    }
+
+    private val errorSound by lazy {
+        MediaPlayer.create(this, R.raw.error)
+    }
+
     override fun getSnackBarRoot(): View = binding.bNext
 
     override val viewModel: CountViewModel by viewModels()
@@ -27,5 +37,22 @@ class CountActivity : BaseActivity<ActivityCountBinding, CountViewModel>(R.layou
     override fun onCreate() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+
+        viewModel.launchNamesScreen.observe(this, { count ->
+            startActivity(InputNamesActivity.getStartIntent(this, count))
+        })
+
+        viewModel.shouldPlayClickSound.observe(this, {
+            if (it) {
+                clickSound.start()
+            }
+        })
+
+        viewModel.shouldPlayError.observe(this, {
+            if (it) {
+                errorSound.start()
+            }
+        })
     }
 }
+
