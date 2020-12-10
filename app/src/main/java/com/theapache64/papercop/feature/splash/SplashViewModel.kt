@@ -17,7 +17,7 @@ class SplashViewModel @ViewModelInject constructor() : BaseViewModel() {
 
     init {
         viewModelScope.launch {
-            delay(2000L)
+            delay(500)
             _shouldGoToCountScreen.value = true
         }
     }

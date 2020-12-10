@@ -8,7 +8,7 @@ import androidx.activity.viewModels
 import com.theapache64.papercop.R
 import com.theapache64.papercop.databinding.ActivityCountBinding
 import com.theapache64.papercop.feature.base.BaseActivity
-import com.theapache64.papercop.feature.names.InputNamesActivity
+import com.theapache64.papercop.feature.inputplayers.InputPlayersActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -39,7 +39,7 @@ class CountActivity : BaseActivity<ActivityCountBinding, CountViewModel>(R.layou
         binding.lifecycleOwner = this
 
         viewModel.launchNamesScreen.observe(this, { count ->
-            startActivity(InputNamesActivity.getStartIntent(this, count))
+            startActivity(InputPlayersActivity.getStartIntent(this, count))
         })
 
         viewModel.shouldPlayClickSound.observe(this, {

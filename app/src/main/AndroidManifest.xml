@@ -12,6 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PaperCop"
         tools:ignore="AllowBackup">
+        <activity android:name=".feature.score.ScoreActivity"></activity>
+        <activity android:name=".feature.pick.PickActivity" />
         <activity android:name=".feature.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,9 +24,8 @@
         <activity
             android:name=".feature.count.CountActivity"
             android:exported="true" />
-
         <activity
-            android:name=".feature.names.InputNamesActivity"
+            android:name=".feature.inputplayers.InputPlayersActivity"
             android:exported="true" />
     </application>
 

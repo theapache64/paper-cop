@@ -7,20 +7,20 @@
 
         <variable
             name="viewModel"
-            type="com.theapache64.papercop.feature.names.InputNamesViewModel" />
+            type="com.theapache64.papercop.feature.score.ScoreViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".feature.names.InputNamesActivity">
+        tools:context=".feature.score.ScoreActivity">
 
         <TextView
-            android:id="@+id/tv_name_them"
+            android:id="@+id/tv_current_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
-            android:text="@string/input_names_name_them"
+            android:layout_marginTop="@dimen/any_page_title_margin_top"
+            android:text="@string/score_label_current_score"
             android:textSize="@dimen/title_text_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,29 +28,24 @@
             app:layout_constraintVertical_chainStyle="spread" />
 
 
-        <ScrollView
-            android:id="@+id/sv_input_names"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_current_score"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="36dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@id/b_next"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_name_them">
-
-            <LinearLayout
-                android:id="@+id/ll_input_names"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" />
-        </ScrollView>
+            app:layout_constraintTop_toBottomOf="@id/tv_current_score" />
 
         <Button
             android:id="@+id/b_next"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:onClick="@{()->viewModel.onNextClicked()}"
-            android:text="@string/action_next"
+            android:onClick="@{()->viewModel.onGoClicked()}"
+            android:text="@string/action_go"
             android:textSize="80sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
