@@ -24,4 +24,6 @@ class PlayersRepo @Inject constructor(
         playersDao.addAll(players)
     }
 
+    fun getAll() = playersDao.getAll()
+
 }

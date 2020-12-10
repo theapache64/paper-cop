@@ -9,7 +9,7 @@ import com.google.android.material.textfield.TextInputLayout
 import com.theapache64.papercop.R
 import com.theapache64.papercop.databinding.ActivityInputPlayersBinding
 import com.theapache64.papercop.feature.base.BaseActivity
-import com.theapache64.papercop.feature.score.ScoreActivity
+import com.theapache64.papercop.feature.players.PlayersActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -92,7 +92,7 @@ class InputPlayersActivity :
 
 
         viewModel.shouldLaunchScoreActivity.observe(this, {
-            startActivity(ScoreActivity.getStartIntent(this))
+            startActivity(PlayersActivity.getStartIntent(this))
         })
     }
 }

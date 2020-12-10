@@ -45,7 +45,8 @@ class InputPlayersViewModel @ViewModelInject constructor(
             // Add new names
             playersRepo.addPlayers(names)
 
-
+            // Launch score activity
+            _shouldLaunchScoreActivity.value = true
         }
     }
 

@@ -13,6 +13,34 @@
     "name": "Activity Kotlin Extensions",
     "description": "Kotlin extensions for 'activity' artifact"
    }
+  },
+  {
+   "id": 2,
+   "type": "implementation",
+   "installed_name": "androidx.lifecycle",
+   "gpm_dep": {
+    "artifact_id": "lifecycle-extensions",
+    "default_type": "implementation",
+    "docs": "https://mvnrepository.com/artifact/androidx.lifecycle/lifecycle-extensions",
+    "get_from": "Google",
+    "group_id": "androidx.lifecycle",
+    "name": "Android Lifecycle Extensions",
+    "description": "Android Lifecycle Extensions"
+   }
+  },
+  {
+   "id": 3,
+   "type": "implementation",
+   "installed_name": "livedata-ktx",
+   "gpm_dep": {
+    "artifact_id": "lifecycle-livedata-ktx",
+    "default_type": "implementation",
+    "docs": "https://mvnrepository.com/artifact/androidx.lifecycle/lifecycle-livedata-ktx",
+    "get_from": "Google",
+    "group_id": "androidx.lifecycle",
+    "name": "LiveData Kotlin Extensions",
+    "description": "Kotlin extensions for 'livedata' artifact"
+   }
   }
  ]
 }

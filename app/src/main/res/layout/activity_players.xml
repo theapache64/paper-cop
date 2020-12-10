@@ -7,13 +7,13 @@
 
         <variable
             name="viewModel"
-            type="com.theapache64.papercop.feature.score.ScoreViewModel" />
+            type="com.theapache64.papercop.feature.players.PlayersViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".feature.score.ScoreActivity">
+        tools:context=".feature.players.PlayersActivity">
 
         <TextView
             android:id="@+id/tv_current_score"
@@ -29,7 +29,7 @@
 
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_current_score"
+            android:id="@+id/rv_players"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="36dp"

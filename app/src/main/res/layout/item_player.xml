@@ -6,14 +6,15 @@
     <data>
 
         <variable
-            name="score"
-            type="com.theapache64.papercop.feature.score.Score" />
+            name="player"
+            type="com.theapache64.papercop.data.local.entities.players.PlayerEntity" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:padding="8dp">
 
         <!--Name-->
@@ -23,7 +24,9 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:singleLine="true"
-            android:text="@{score.name}"
+            android:gravity="center"
+            android:text="@{player.name}"
+            android:textSize="32sp"
             app:layout_constraintEnd_toStartOf="@id/tv_score"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -35,7 +38,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@{score.totalScore + ``}"
+            android:text="@{player.totalScore + ``}"
+            android:textSize="32sp"
             app:layout_constraintBottom_toBottomOf="@id/tv_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/tv_name"
