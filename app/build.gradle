@@ -76,4 +76,7 @@ dependencies {
 
     // LiveData Kotlin Extensions : Kotlin extensions for 'livedata' artifact
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.0-beta01'
+
+    // Expekt : An assertion library for Kotlin
+    testImplementation 'com.theapache64:expekt:0.0.1'
 }
