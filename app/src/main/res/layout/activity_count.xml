@@ -72,7 +72,7 @@
             tools:ignore="HardcodedText" />
 
         <!--Next-->
-        <Button
+        <com.theapache64.papercop.widget.PrimaryButton
             android:id="@+id/b_next"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

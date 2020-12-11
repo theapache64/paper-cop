@@ -40,13 +40,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_current_score" />
 
-        <Button
+        <com.theapache64.papercop.widget.PrimaryButton
             android:id="@+id/b_next"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:onClick="@{()->viewModel.onGoClicked()}"
             android:text="@string/action_go"
-            android:textSize="80sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
