@@ -64,7 +64,7 @@ class InputPlayersActivity :
                 val players = mutableListOf<String>()
                 for (child in binding.llInputPlayers.children) {
                     child as TextInputLayout
-                    val name = child.editText?.text?.trim().toString() ?: ""
+                    val name = child.editText?.text?.trim().toString().toUpperCase() ?: ""
                     if (name.isBlank()) {
                         // empty name
                         child.error = getString(R.string.input_players_error_empty)
