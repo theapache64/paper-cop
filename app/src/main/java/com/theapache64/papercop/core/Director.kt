@@ -1,52 +1,77 @@
 package com.theapache64.papercop.core
 
+import com.theapache64.papercop.data.local.entities.players.PlayerEntity
+import com.theapache64.papercop.model.Role
+
 /**
  * Created by theapache64 : Dec 11 Fri,2020 @ 18:17
  */
 object Director {
 
 
-    private const val SOLDIER_NAME = "Soldier"
-    private const val SOLDIER_POINT = 300
+    private val warrior = Role(
+        "Warrior",
+        300,
+        "🗡️"
+    )
 
-    private val CHARS_TABLE = mapOf(
+    private val availableRoles = listOf(
+        Role(
+            "King",
+            1000,
+            "👑"
+        ),
 
-        // Mandatory chars
-        "King 👑" to 1000,
-        "Police 👮" to 700,
-        "Thief 👺" to 0,
+        Role(
+            "Police",
+            700,
+            "👮"
+        ),
 
-        // Optional chars
-        "Queen" to 900,
-        "Minister" to 800,
+        Role(
+            "Thief",
+            0,
+            "👺"
+        ),
 
-        // Special char
-        SOLDIER_NAME to SOLDIER_POINT
-    ).toList()
+        Role(
+            "Queen",
+            900,
+            "👸"
+        ),
 
+        Role(
+            "Minister",
+            800,
+            "👨"
+        ),
 
-    fun provideCharacters(players: List<String>): Map<String, String> {
+        warrior
+    )
 
-        val charsTable = if (players.size > CHARS_TABLE.size) {
+    fun provideRoles(players: List<PlayerEntity>): Map<PlayerEntity, Role> {
+
+        val roles = if (players.size > availableRoles.size) {
             // Here number of players are greater than available chars. so we need to fill up
             // the missing space with soldiers
-            CHARS_TABLE
+            availableRoles
                 .toMutableList()
                 .apply {
                     // fill missing chars with soldier
-                    repeat(players.size - CHARS_TABLE.size) {
-                        add(Pair(SOLDIER_NAME, SOLDIER_POINT))
+                    val noOfRolesNeeded = players.size - availableRoles.size
+                    repeat(noOfRolesNeeded) {
+                        add(warrior)
                     }
                 }
         } else {
-            CHARS_TABLE
+            availableRoles
         }
 
         return players
             .shuffled() // shuffling player position
-            .mapIndexed { index, playerName ->
-                val charName = charsTable[index].first
-                Pair(playerName, charName) // getting random character
+            .mapIndexed { index, player ->
+                val role = roles[index]
+                Pair(player, role) // getting random character
             }
             .shuffled() // shuffling order
             .toMap()

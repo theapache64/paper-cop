@@ -10,4 +10,5 @@
     <string name="score_label_current_score">CURRENT SCORE</string>
     <string name="action_go">GO!</string>
     <string name="pick_hold_me">HOLD ME</string>
+    <string name="find_find_thief">FIND THIEF!</string>
 </resources>

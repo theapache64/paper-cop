@@ -10,7 +10,7 @@ class DirectorTest {
     @Test
     fun `provide less than available characters`() {
         val names = listOf("A", "B", "C")
-        val chars = Director.provideCharacters(names)
+        val chars = Director.provideRoles(names)
         println(chars)
         chars.size.should.equal(names.size)
     }
@@ -18,7 +18,7 @@ class DirectorTest {
     @Test
     fun `provide more than available characters`() {
         val names = ('A'..'Z').map { it.toString() }.toList()
-        val chars = Director.provideCharacters(names)
+        val chars = Director.provideRoles(names)
         chars.forEach { println(it) }
         chars.size.should.equal(names.size)
     }

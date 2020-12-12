@@ -4,9 +4,10 @@ import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.media.MediaPlayer
 import android.view.MotionEvent
 import android.view.View
-import android.view.animation.AccelerateDecelerateInterpolator
+import android.view.animation.AccelerateInterpolator
 import androidx.activity.viewModels
 import androidx.core.animation.addListener
 import com.theapache64.papercop.R
@@ -18,6 +19,7 @@ import timber.log.Timber
 @AndroidEntryPoint
 class PickActivity : BaseActivity<ActivityPickBinding, PickViewModel>(R.layout.activity_pick) {
 
+
     override val viewModel: PickViewModel by viewModels()
 
     companion object {
@@ -28,11 +30,20 @@ class PickActivity : BaseActivity<ActivityPickBinding, PickViewModel>(R.layout.a
         }
     }
 
+
+    private val progressSound by lazy {
+        MediaPlayer.create(this, R.raw.progress)
+    }
+
+    private val rewardSound by lazy {
+        MediaPlayer.create(this, R.raw.reward)
+    }
+
     private val progressValueAnimator by lazy {
         ValueAnimator.ofInt(0, 100)
             .apply {
                 duration = 4000
-                interpolator = AccelerateDecelerateInterpolator()
+                interpolator = AccelerateInterpolator()
 
                 addUpdateListener {
                     Timber.d("onCreate: Animated value : ${it.animatedValue}")
@@ -46,9 +57,9 @@ class PickActivity : BaseActivity<ActivityPickBinding, PickViewModel>(R.layout.a
                     onEnd = {
                         Timber.d("Ended: ")
                         binding.pbReveal.visibility = View.INVISIBLE
-
                         if (binding.pbReveal.progress == 100) {
                             viewModel.onHoldFinished()
+                            rewardSound.start()
                         }
                     },
                     onCancel = {
@@ -70,11 +81,14 @@ class PickActivity : BaseActivity<ActivityPickBinding, PickViewModel>(R.layout.a
                 MotionEvent.ACTION_DOWN -> {
                     Timber.d("onCreate: Holding!")
                     progressValueAnimator.start()
+                    progressSound.start()
                 }
                 MotionEvent.ACTION_UP -> {
                     Timber.d("onCreate: Up! so cancelled")
                     binding.pbReveal.progress = 0
                     progressValueAnimator.cancel()
+                    progressSound.stop()
+                    progressSound.prepareAsync()
                 }
             }
             false

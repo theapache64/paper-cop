@@ -8,6 +8,7 @@ import com.theapache64.papercop.core.Director
 import com.theapache64.papercop.data.local.entities.players.PlayerEntity
 import com.theapache64.papercop.data.repo.PlayersRepo
 import com.theapache64.papercop.feature.base.BaseViewModel
+import com.theapache64.papercop.model.Role
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -19,15 +20,15 @@ class PickViewModel @ViewModelInject constructor(
 ) : BaseViewModel() {
 
 
-    private val _charName = MutableLiveData<String>()
-    val charName: LiveData<String> = _charName
+    private val _role = MutableLiveData<Role>()
+    val role: LiveData<Role> = _role
 
-    private val _playerName = MutableLiveData<String>()
-    val playerName: LiveData<String> = _playerName
+    private val _player = MutableLiveData<PlayerEntity>()
+    val player: LiveData<PlayerEntity> = _player
 
     lateinit var players: List<PlayerEntity>
-    lateinit var chars: Map<String, String>
-    lateinit var tempChars: MutableMap<String, String>
+    private lateinit var charsMap: Map<PlayerEntity, Role>
+    private lateinit var tempCharsMap: MutableMap<PlayerEntity, Role>
 
     private val _isCharNameVisible = MutableLiveData(false)
     val isCharNameVisible: LiveData<Boolean> = _isCharNameVisible
@@ -43,8 +44,8 @@ class PickViewModel @ViewModelInject constructor(
         viewModelScope.launch {
             playersRepo.getAll().collect { players ->
                 this@PickViewModel.players = players
-                this@PickViewModel.chars = Director.provideCharacters(players.map { it.name })
-                this@PickViewModel.tempChars = chars.toMutableMap()
+                this@PickViewModel.charsMap = Director.provideRoles(players)
+                this@PickViewModel.tempCharsMap = charsMap.toMutableMap()
 
                 onNextClicked()
             }
@@ -54,22 +55,22 @@ class PickViewModel @ViewModelInject constructor(
     fun onHoldFinished() {
         _isHoldMeVisible.value = false
         _isCharNameVisible.value = true
-        if (tempChars.isNotEmpty()) {
+        if (tempCharsMap.isNotEmpty()) {
             // not finished
             _isNextVisible.value = true
         } else {
             // finished
-            _toastMsg.value = "Finished"
+
         }
     }
 
 
     fun onNextClicked() {
-        val playerName = tempChars.keys.first()
+        val playerName = tempCharsMap.keys.first()
 
-        _playerName.value = playerName
-        _charName.value = tempChars[playerName]
-        tempChars.remove(playerName)
+        _player.value = playerName
+        _role.value = tempCharsMap[playerName]
+        tempCharsMap.remove(playerName)
 
         _isCharNameVisible.value = false
         _isNextVisible.value = false

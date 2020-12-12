@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import com.theapache64.papercop.R
 import com.theapache64.papercop.databinding.ActivityPlayersBinding
 import com.theapache64.papercop.feature.base.BaseActivity
+import com.theapache64.papercop.feature.pick.PickActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,7 +25,10 @@ class PlayersActivity :
     }
 
     override fun onCreate() {
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
 
+        // Rending players
         viewModel.players.observe(this, { players ->
             val adapter = PlayersAdapter(
                 this,
@@ -34,6 +38,14 @@ class PlayersActivity :
             }
 
             binding.rvPlayers.adapter = adapter
+        })
+
+
+        // Watching for pick activity
+        viewModel.shouldGoToPickActivity.observe(this, {
+            if (it) {
+                startActivity(PickActivity.getStartIntent(this))
+            }
         })
     }
 
