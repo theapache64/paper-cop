@@ -43,7 +43,7 @@ class PickActivity : BaseActivity<ActivityPickBinding, PickViewModel>(R.layout.a
     private val progressValueAnimator by lazy {
         ValueAnimator.ofInt(0, 100)
             .apply {
-                duration = 4000
+                duration = PickViewModel.DURATION_REVEAL
                 interpolator = AccelerateInterpolator()
 
                 addUpdateListener {
@@ -57,6 +57,9 @@ class PickActivity : BaseActivity<ActivityPickBinding, PickViewModel>(R.layout.a
                     },
                     onEnd = {
                         Timber.d("Ended: ")
+                        progressSound.stop()
+                        progressSound.prepareAsync()
+                        
                         binding.pbReveal.visibility = View.INVISIBLE
                         if (binding.pbReveal.progress == 100) {
                             viewModel.onHoldFinished()
@@ -86,8 +89,6 @@ class PickActivity : BaseActivity<ActivityPickBinding, PickViewModel>(R.layout.a
                 MotionEvent.ACTION_UP -> {
                     binding.pbReveal.progress = 0
                     progressValueAnimator.cancel()
-                    progressSound.stop()
-                    progressSound.prepareAsync()
                 }
             }
             false

@@ -20,6 +20,9 @@ class PickViewModel @ViewModelInject constructor(
     private val playersRepo: PlayersRepo
 ) : BaseViewModel() {
 
+    companion object{
+        const val DURATION_REVEAL = 500L
+    }
 
     private val _role = MutableLiveData<Role>()
     val role: LiveData<Role> = _role
@@ -28,7 +31,7 @@ class PickViewModel @ViewModelInject constructor(
     val player: LiveData<PlayerEntity> = _player
 
     lateinit var players: List<PlayerEntity>
-    private lateinit var charsMap: Map<PlayerEntity, Role>
+    private lateinit var charsMap: HashMap<PlayerEntity, Role>
     private lateinit var tempCharsMap: MutableMap<PlayerEntity, Role>
 
     private val _isCharNameVisible = MutableLiveData(false)
@@ -69,7 +72,7 @@ class PickViewModel @ViewModelInject constructor(
             prepareForNextRoleReveal()
         } else {
             // finished
-            _shouldLaunchFindThiefActivity.value
+            _shouldLaunchFindThiefActivity.value = charsMap
         }
     }
 
