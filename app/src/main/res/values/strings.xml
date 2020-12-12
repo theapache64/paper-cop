@@ -9,4 +9,5 @@
     <string name="input_player_names_error_name">Uh ho! It seems like there\'s an with the names</string>
     <string name="score_label_current_score">CURRENT SCORE</string>
     <string name="action_go">GO!</string>
+    <string name="pick_hold_me">HOLD ME</string>
 </resources>

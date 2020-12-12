@@ -79,4 +79,7 @@ dependencies {
 
     // Expekt : An assertion library for Kotlin
     testImplementation 'com.theapache64:expekt:0.0.1'
+
+    // Timber : No-nonsense injectable logging.
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 }

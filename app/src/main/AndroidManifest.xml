@@ -15,7 +15,10 @@
         <activity
             android:name=".feature.players.PlayersActivity"
             android:exported="true" />
-        <activity android:name=".feature.pick.PickActivity" />
+        <activity
+            android:name=".feature.pick.PickActivity"
+            android:exported="true" />
+
         <activity android:name=".feature.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

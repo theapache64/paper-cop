@@ -12,22 +12,24 @@ object Director {
     private val CHARS_TABLE = mapOf(
 
         // Mandatory chars
-        "King" to 1000,
-        "Police" to 700,
-        "Thief" to 0,
+        "King 👑" to 1000,
+        "Police 👮" to 700,
+        "Thief 👺" to 0,
 
         // Optional chars
         "Queen" to 900,
         "Minister" to 800,
 
         // Special char
-        "Soldier" to SOLDIER_POINT
+        SOLDIER_NAME to SOLDIER_POINT
     ).toList()
 
 
     fun provideCharacters(players: List<String>): Map<String, String> {
 
         val charsTable = if (players.size > CHARS_TABLE.size) {
+            // Here number of players are greater than available chars. so we need to fill up
+            // the missing space with soldiers
             CHARS_TABLE
                 .toMutableList()
                 .apply {

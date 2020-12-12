@@ -55,6 +55,20 @@
     "name": "Expekt",
     "description": "An assertion library for Kotlin"
    }
+  },
+  {
+   "id": 5,
+   "type": "implementation",
+   "installed_name": "timber",
+   "gpm_dep": {
+    "artifact_id": "timber",
+    "default_type": "implementation",
+    "docs": "https://mvnrepository.com/artifact/com.jakewharton.timber/timber",
+    "get_from": "Central",
+    "group_id": "com.jakewharton.timber",
+    "name": "Timber",
+    "description": "No-nonsense injectable logging."
+   }
   }
  ]
 }

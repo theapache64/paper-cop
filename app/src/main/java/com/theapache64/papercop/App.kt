@@ -6,6 +6,7 @@ import dagger.hilt.android.HiltAndroidApp
 import io.github.inflationx.calligraphy3.CalligraphyConfig
 import io.github.inflationx.calligraphy3.CalligraphyInterceptor
 import io.github.inflationx.viewpump.ViewPump
+import timber.log.Timber
 
 /**
  * Created by theapache64 : Dec 08 Tue,2020 @ 21:15
@@ -32,5 +33,7 @@ class App : Application() {
                 )
                 .build()
         )
+
+        Timber.plant(Timber.DebugTree())
     }
 }
