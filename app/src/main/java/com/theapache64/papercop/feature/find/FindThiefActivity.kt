@@ -5,8 +5,10 @@ import android.content.Context
 import android.content.Intent
 import androidx.activity.viewModels
 import com.theapache64.papercop.R
+import com.theapache64.papercop.data.local.entities.players.PlayerEntity
 import com.theapache64.papercop.databinding.ActivityFindThiefBinding
 import com.theapache64.papercop.feature.base.BaseActivity
+import com.theapache64.papercop.model.Role
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -17,7 +19,7 @@ class FindThiefActivity :
     companion object {
         private const val KEY_CHAR_MAP = "char_map"
 
-        fun getStartIntent(context: Context, charMap: HashMap<String, String>): Intent {
+        fun getStartIntent(context: Context, charMap: HashMap<PlayerEntity, Role>): Intent {
             return Intent(context, FindThiefActivity::class.java).apply {
                 // data goes here
                 putExtra(KEY_CHAR_MAP, charMap)

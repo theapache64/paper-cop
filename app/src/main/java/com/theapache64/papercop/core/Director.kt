@@ -49,7 +49,7 @@ object Director {
         warrior
     )
 
-    fun provideRoles(players: List<PlayerEntity>): Map<PlayerEntity, Role> {
+    fun provideRoles(players: List<PlayerEntity>): HashMap<PlayerEntity, Role> {
 
         val roles = if (players.size > availableRoles.size) {
             // Here number of players are greater than available chars. so we need to fill up
@@ -74,6 +74,6 @@ object Director {
                 Pair(player, role) // getting random character
             }
             .shuffled() // shuffling order
-            .toMap()
+            .toMap() as HashMap<PlayerEntity, Role>
     }
 }

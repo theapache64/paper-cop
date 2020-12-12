@@ -9,6 +9,7 @@ import com.theapache64.papercop.data.local.entities.players.PlayerEntity
 import com.theapache64.papercop.data.repo.PlayersRepo
 import com.theapache64.papercop.feature.base.BaseViewModel
 import com.theapache64.papercop.model.Role
+import com.theapache64.papercop.utils.livedata.SingleLiveEvent
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -39,6 +40,9 @@ class PickViewModel @ViewModelInject constructor(
     private val _isNextVisible = MutableLiveData(false)
     val isNextVisible: LiveData<Boolean> = _isNextVisible
 
+    private val _shouldLaunchFindThiefActivity = SingleLiveEvent<HashMap<PlayerEntity, Role>>()
+    val shouldLaunchFindThiefActivity: LiveData<HashMap<PlayerEntity, Role>> =
+        _shouldLaunchFindThiefActivity
 
     init {
         viewModelScope.launch {
@@ -55,17 +59,21 @@ class PickViewModel @ViewModelInject constructor(
     fun onHoldFinished() {
         _isHoldMeVisible.value = false
         _isCharNameVisible.value = true
-        if (tempCharsMap.isNotEmpty()) {
-            // not finished
-            _isNextVisible.value = true
-        } else {
-            // finished
-
-        }
+        _isNextVisible.value = true
     }
 
 
     fun onNextClicked() {
+        if (tempCharsMap.isNotEmpty()) {
+            // not finished
+            prepareForNextRoleReveal()
+        } else {
+            // finished
+            _shouldLaunchFindThiefActivity.value
+        }
+    }
+
+    private fun prepareForNextRoleReveal() {
         val playerName = tempCharsMap.keys.first()
 
         _player.value = playerName

@@ -13,6 +13,7 @@ import androidx.core.animation.addListener
 import com.theapache64.papercop.R
 import com.theapache64.papercop.databinding.ActivityPickBinding
 import com.theapache64.papercop.feature.base.BaseActivity
+import com.theapache64.papercop.feature.find.FindThiefActivity
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
@@ -76,15 +77,13 @@ class PickActivity : BaseActivity<ActivityPickBinding, PickViewModel>(R.layout.a
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
-        binding.bHoldMe.setOnTouchListener { v, event ->
+        binding.bHoldMe.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
-                    Timber.d("onCreate: Holding!")
                     progressValueAnimator.start()
                     progressSound.start()
                 }
                 MotionEvent.ACTION_UP -> {
-                    Timber.d("onCreate: Up! so cancelled")
                     binding.pbReveal.progress = 0
                     progressValueAnimator.cancel()
                     progressSound.stop()
@@ -93,6 +92,10 @@ class PickActivity : BaseActivity<ActivityPickBinding, PickViewModel>(R.layout.a
             }
             false
         }
+
+        viewModel.shouldLaunchFindThiefActivity.observe(this, {
+            startActivity(FindThiefActivity.getStartIntent(this, it))
+        })
     }
 
 }
