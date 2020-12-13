@@ -27,13 +27,14 @@ class FindThiefViewModel @ViewModelInject constructor(
     }
 
     private lateinit var players: List<PlayerEntity>
-    private val _rolesMap = SingleLiveEvent<HashMap<PlayerEntity, Role>>()
+
+    private val _rolesMap = MutableLiveData<HashMap<PlayerEntity, Role>>()
     val rolesMap: LiveData<HashMap<PlayerEntity, Role>> = _rolesMap
 
     private val _isNextVisible = MutableLiveData<Boolean>()
     val isNextVisible: LiveData<Boolean> = _isNextVisible
 
-    private val _adapterState = SingleLiveEvent<FindThiefAdapter.State>()
+    private val _adapterState = MutableLiveData<FindThiefAdapter.State>()
     val adapterState: LiveData<FindThiefAdapter.State> = _adapterState
 
     private val _result = MutableLiveData("Find Thief!")

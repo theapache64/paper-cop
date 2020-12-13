@@ -77,7 +77,6 @@ class FindThiefActivity :
         })
 
 
-
         viewModel.adapterState.observe(this, { newState ->
             adapter?.state = newState
             adapter?.notifyDataSetChanged()
