@@ -12,8 +12,7 @@ import com.theapache64.papercop.databinding.ItemPlayerBinding
 
 class PlayersAdapter(
     context: Context,
-    private val players: List<PlayerEntity>,
-    private val callback: (position: Int) -> Unit
+    private val players: List<PlayerEntity>
 ) : RecyclerView.Adapter<PlayersAdapter.ViewHolder>() {
 
     private val inflater = LayoutInflater.from(context)
@@ -30,11 +29,5 @@ class PlayersAdapter(
         holder.binding.player = player
     }
 
-    inner class ViewHolder(val binding: ItemPlayerBinding) : RecyclerView.ViewHolder(binding.root) {
-        init {
-            binding.root.setOnClickListener {
-                callback(layoutPosition)
-            }
-        }
-    }
+    inner class ViewHolder(val binding: ItemPlayerBinding) : RecyclerView.ViewHolder(binding.root)
 }

@@ -43,7 +43,6 @@ class InputPlayersActivity :
 
         viewModel.init(count)
 
-
         viewModel.generateInputFields.observe(this, { inputCount ->
             val inflater = LayoutInflater.from(this)
             for (i in 0 until inputCount) {

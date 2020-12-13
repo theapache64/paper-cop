@@ -33,9 +33,7 @@ class PlayersActivity :
             val adapter = PlayersAdapter(
                 this,
                 players
-            ) { position ->
-
-            }
+            )
 
             binding.rvPlayers.adapter = adapter
         })
