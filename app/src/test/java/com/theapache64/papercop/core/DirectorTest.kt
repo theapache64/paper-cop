@@ -1,6 +1,7 @@
 package com.theapache64.papercop.core
 
 import com.theapache64.expekt.should
+import com.theapache64.papercop.data.local.entities.players.PlayerEntity
 import org.junit.Test
 
 /**
@@ -9,17 +10,19 @@ import org.junit.Test
 class DirectorTest {
     @Test
     fun `provide less than available characters`() {
-        val names = listOf("A", "B", "C")
+        val names = listOf("A", "B", "C").map {
+            PlayerEntity(0, it, 0)
+        }
         val chars = Director.provideRoles(names)
-        println(chars)
         chars.size.should.equal(names.size)
     }
 
     @Test
     fun `provide more than available characters`() {
-        val names = ('A'..'Z').map { it.toString() }.toList()
+        val names = ('A'..'Z').map {
+            PlayerEntity(0, it.toString(), 0)
+        }.toList()
         val chars = Director.provideRoles(names)
-        chars.forEach { println(it) }
         chars.size.should.equal(names.size)
     }
 }
