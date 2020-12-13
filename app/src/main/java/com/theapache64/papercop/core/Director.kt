@@ -8,6 +8,10 @@ import com.theapache64.papercop.model.Role
  */
 object Director {
 
+    const val ROLE_NAME_THIEF = "Thief"
+    const val ROLE_NAME_POLICE = "Police"
+    const val ROLE_POINT_POLICE = 700
+    const val ROLE_POINT_THIEF = 0
 
     private val warrior = Role(
         "Warrior",
@@ -15,7 +19,7 @@ object Director {
         "🗡️"
     )
 
-    private val availableRoles = listOf(
+    val availableRoles = listOf(
         Role(
             "King",
             1000,
@@ -24,13 +28,13 @@ object Director {
 
         Role(
             "Police",
-            700,
+            ROLE_POINT_POLICE,
             "👮"
         ),
 
         Role(
-            "Thief",
-            0,
+            ROLE_NAME_THIEF,
+            ROLE_POINT_THIEF,
             "👺"
         ),
 

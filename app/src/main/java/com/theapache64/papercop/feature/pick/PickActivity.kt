@@ -96,6 +96,7 @@ class PickActivity : BaseActivity<ActivityPickBinding, PickViewModel>(R.layout.a
 
         viewModel.shouldLaunchFindThiefActivity.observe(this, {
             startActivity(FindThiefActivity.getStartIntent(this, it))
+            finish()
         })
     }
 

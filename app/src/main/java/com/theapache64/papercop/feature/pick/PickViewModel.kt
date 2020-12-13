@@ -21,7 +21,7 @@ class PickViewModel @ViewModelInject constructor(
 ) : BaseViewModel() {
 
     companion object{
-        const val DURATION_REVEAL = 500L
+        const val DURATION_REVEAL = 4000L
     }
 
     private val _role = MutableLiveData<Role>()

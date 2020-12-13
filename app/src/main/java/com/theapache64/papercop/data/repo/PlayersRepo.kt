@@ -20,10 +20,11 @@ class PlayersRepo @Inject constructor(
      * To add players
      */
     suspend fun addPlayers(names: List<String>) {
-        val players = names.map { name -> PlayerEntity(name, 0) }
+        val players = names.map { name -> PlayerEntity(0, name, 0) }
         playersDao.addAll(players)
     }
 
     fun getAll() = playersDao.getAll()
+    suspend fun update(players: List<PlayerEntity>) = playersDao.update(players)
 
 }

@@ -11,4 +11,5 @@
     <string name="action_go">GO!</string>
     <string name="pick_hold_me">HOLD ME</string>
     <string name="find_find_thief">FIND THIEF!</string>
+    <string name="find_thief_error_self">You\'re a cop dude!</string>
 </resources>

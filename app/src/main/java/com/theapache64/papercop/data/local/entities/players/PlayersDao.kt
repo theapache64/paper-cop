@@ -1,9 +1,6 @@
 package com.theapache64.papercop.data.local.entities.players
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -19,4 +16,7 @@ interface PlayersDao {
 
     @Query("SELECT * FROM players ORDER BY total_score DESC")
     fun getAll(): Flow<List<PlayerEntity>>
+
+    @Update
+    suspend fun update(players: List<PlayerEntity>)
 }

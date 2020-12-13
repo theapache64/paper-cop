@@ -16,12 +16,13 @@ import kotlinx.parcelize.Parcelize
 )
 @Parcelize
 class PlayerEntity(
+    @ColumnInfo(name = "id")
+    @PrimaryKey(autoGenerate = true)
+    var id: Long = 0,
     @ColumnInfo(name = "name")
     val name: String,
     @ColumnInfo(name = "total_score")
-    val totalScore: Int
+    var totalScore: Int
 ) : Parcelable {
-    @ColumnInfo(name = "id")
-    @PrimaryKey(autoGenerate = true)
-    var id: Long = 0
+
 }

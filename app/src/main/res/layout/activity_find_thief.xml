@@ -5,20 +5,25 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.theapache64.papercop.feature.find.FindThiefViewModel" />
+
+        <import type="android.view.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         tools:context=".feature.find.FindThiefActivity">
 
 
         <TextView
-            android:id="@+id/tv_player_name"
+            android:id="@+id/tv_find_thief_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/any_page_title_margin_top"
-            android:text="@string/find_find_thief"
+            android:text="@{viewModel.result}"
             android:textSize="@dimen/title_text_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -26,6 +31,30 @@
             app:layout_constraintVertical_chainStyle="spread" />
 
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_find_thief"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@id/b_next"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_find_thief_title"
+            tools:listitem="@layout/item_find_thief" />
+
+
+        <com.theapache64.papercop.widget.PrimaryButton
+            android:id="@+id/b_next"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->viewModel.onNextClicked()}"
+            android:text="@string/action_next"
+            android:visibility="@{viewModel.isNextVisible ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

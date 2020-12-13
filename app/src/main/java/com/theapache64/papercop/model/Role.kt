@@ -9,6 +9,6 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 class Role(
     val name: String,
-    val point: Int,
+    var point: Int,
     val emoji: String
 ) : Parcelable
