@@ -12,16 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PaperCop"
         tools:ignore="AllowBackup">
+
         <activity
-            android:name=".feature.find.FindThiefActivity"
-            android:exported="true" />
-        <activity
-            android:name=".feature.players.PlayersActivity"
-            android:exported="true" />
-        <activity
-            android:name=".feature.pick.PickActivity"
-            android:exported="true" />
-        <activity android:name=".feature.splash.SplashActivity">
+            android:name=".feature.splash.SplashActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,10 +25,30 @@
         </activity>
         <activity
             android:name=".feature.count.CountActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:exported="true" />
         <activity
             android:name=".feature.inputplayers.InputPlayersActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:exported="true" />
+
+        <activity
+            android:name=".feature.find.FindThiefActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".feature.players.PlayersActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".feature.pick.PickActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
     </application>
 
 </manifest>
