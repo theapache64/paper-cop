@@ -1,6 +1,6 @@
 # Paper Cop 👮
 
-The traditional "Kallanum Polisum" game android-ized.
+The "Raja Chor Mantri Sipahi" (aka "Kallanum Polisum" 😂) game android-ized.
 
 > Save Paper 📖, Save Trees 🌲, Save the World! 🗺️ 😜
 
