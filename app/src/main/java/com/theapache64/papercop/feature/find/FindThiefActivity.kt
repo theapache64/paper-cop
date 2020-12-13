@@ -84,11 +84,11 @@ class FindThiefActivity :
 
         viewModel.result.observe(this, { result ->
             when (result) {
-                FindThiefViewModel.RESULT_CORRECT -> {
+                R.string.find_correct -> {
                     correctSound.start()
                 }
 
-                FindThiefViewModel.RESULT_INCORRECT -> {
+                R.string.find_incorrect -> {
                     incorrectSound.start()
                 }
             }

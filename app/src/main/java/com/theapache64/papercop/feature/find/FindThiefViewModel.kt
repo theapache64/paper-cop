@@ -10,7 +10,6 @@ import com.theapache64.papercop.data.local.entities.players.PlayerEntity
 import com.theapache64.papercop.data.repo.PlayersRepo
 import com.theapache64.papercop.feature.base.BaseViewModel
 import com.theapache64.papercop.model.Role
-import com.theapache64.papercop.utils.livedata.SingleLiveEvent
 import kotlinx.coroutines.launch
 import java.util.*
 
@@ -20,11 +19,6 @@ import java.util.*
 class FindThiefViewModel @ViewModelInject constructor(
     private val playersRepo: PlayersRepo
 ) : BaseViewModel() {
-
-    companion object {
-        const val RESULT_CORRECT = "Correct 🎊"
-        const val RESULT_INCORRECT = "Incorrect ❌"
-    }
 
     private lateinit var players: List<PlayerEntity>
 
@@ -37,12 +31,11 @@ class FindThiefViewModel @ViewModelInject constructor(
     private val _adapterState = MutableLiveData<FindThiefAdapter.State>()
     val adapterState: LiveData<FindThiefAdapter.State> = _adapterState
 
-    private val _result = MutableLiveData("Find Thief!")
-    val result: LiveData<String> = _result
+    private val _result = MutableLiveData(R.string.find_find_thief)
+    val result: LiveData<Int> = _result
 
     private val _shouldFinishFind = MutableLiveData<Boolean>()
     val shouldFinishFind: LiveData<Boolean> = _shouldFinishFind
-
 
     fun init(rolesMap: HashMap<PlayerEntity, Role>) {
         _rolesMap.value = rolesMap
@@ -66,7 +59,7 @@ class FindThiefViewModel @ViewModelInject constructor(
             val isGuessCorrect = role.name == Director.ROLE_NAME_THIEF
 
             if (isGuessCorrect) {
-                _result.value = RESULT_CORRECT
+                _result.value = R.string.find_correct
                 _adapterState.value = FindThiefAdapter.State(
                     shouldRevealRole = true,
                     shouldSwitchPoliceThiefPoints = false
@@ -74,7 +67,7 @@ class FindThiefViewModel @ViewModelInject constructor(
             } else {
 
                 // wrong guess
-                _result.value = RESULT_INCORRECT
+                _result.value = R.string.find_incorrect
                 _adapterState.value = FindThiefAdapter.State(
                     shouldRevealRole = true,
                     shouldSwitchPoliceThiefPoints = true
