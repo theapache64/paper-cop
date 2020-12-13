@@ -4,6 +4,10 @@ The traditional "Kallanum Polisum" game android-ized.
 
 > Save Paper 📖, Save Trees 🌲, Save the World! 🗺️ 😜
 
+## Download 📥
+
+- [Download APK](https://github.com/theapache64/paper-cop/releases/latest/download/app-release.apk)
+
 ## Screenshots 📱
 
 ![](montage.png)
