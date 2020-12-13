@@ -19,6 +19,7 @@
             android:id="@+id/tv_name_them"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:layout_marginTop="48dp"
             android:text="@string/input_players_name_them"
             android:textSize="@dimen/title_text_size"
