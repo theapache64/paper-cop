@@ -13,8 +13,8 @@ object Director {
     const val ROLE_POINT_POLICE = 700
     const val ROLE_POINT_THIEF = 0
 
-    private val warrior = Role(
-        "Warrior",
+    private val soldier = Role(
+        "Soldier",
         300,
         "🗡️"
     )
@@ -50,7 +50,7 @@ object Director {
             "👨"
         ),
 
-        warrior
+        soldier
     )
 
     fun provideRoles(players: List<PlayerEntity>): HashMap<PlayerEntity, Role> {
@@ -63,8 +63,8 @@ object Director {
                 .apply {
                     // fill missing chars with soldier
                     val noOfRolesNeeded = players.size - availableRoles.size
-                    repeat(noOfRolesNeeded) {
-                        add(warrior)
+                    repeat(noOfRolesNeeded) {s
+                        add(soldier)
                     }
                 }
         } else {

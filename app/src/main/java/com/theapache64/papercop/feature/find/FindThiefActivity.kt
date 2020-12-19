@@ -19,20 +19,14 @@ class FindThiefActivity :
 
     private var adapter: FindThiefAdapter? = null
     private val dummyRolesMap by lazy {
-        hashMapOf(
-            Pair(
-                PlayerEntity(0, "Daniel", 0),
-                Director.availableRoles[0]
-            ),
-            Pair(
-                PlayerEntity(0, "Albon", 0),
-                Director.availableRoles[1]
-            ),
-            Pair(
-                PlayerEntity(0, "Max", 0),
-                Director.availableRoles[2]
-            ),
-        )
+        hashMapOf<PlayerEntity, Role>().apply {
+            for ((index, role) in Director.availableRoles.withIndex()) {
+                put(
+                    PlayerEntity(0, "Player $index", 0),
+                    role
+                )
+            }
+        }
     }
 
     override val viewModel: FindThiefViewModel by viewModels()
