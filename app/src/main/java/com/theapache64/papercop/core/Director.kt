@@ -63,7 +63,7 @@ object Director {
                 .apply {
                     // fill missing chars with soldier
                     val noOfRolesNeeded = players.size - availableRoles.size
-                    repeat(noOfRolesNeeded) {s
+                    repeat(noOfRolesNeeded) {
                         add(soldier)
                     }
                 }
