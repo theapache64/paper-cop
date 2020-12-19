@@ -20,36 +20,11 @@ object Director {
     )
 
     val availableRoles = listOf(
-        Role(
-            "King",
-            1000,
-            "👑"
-        ),
-
-        Role(
-            "Police",
-            ROLE_POINT_POLICE,
-            "👮"
-        ),
-
-        Role(
-            ROLE_NAME_THIEF,
-            ROLE_POINT_THIEF,
-            "👺"
-        ),
-
-        Role(
-            "Queen",
-            900,
-            "👸"
-        ),
-
-        Role(
-            "Minister",
-            800,
-            "👨"
-        ),
-
+        Role("King", 1000, "👑"),
+        Role("Police", ROLE_POINT_POLICE, "👮"),
+        Role(ROLE_NAME_THIEF, ROLE_POINT_THIEF, "👺"),
+        Role("Queen", 900, "👸"),
+        Role("Minister", 800, "👨"),
         soldier
     )
 
