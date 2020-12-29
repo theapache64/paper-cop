@@ -15,4 +15,8 @@
     <string name="find_incorrect">Incorrect ❌</string>
     <string name="find_thief_error_self">That\'s YOU!</string>
     <string name="msg_tap_twice_to_exit">Tap again to exit</string>
+    <string name="find_dialog_confirm_title">Confirm</string>
+    <string name="find_dialog_confirm_message">Are you sure %s is the thief?</string>
+    <string name="action_yes">YES</string>
+    <string name="action_no">NO</string>
 </resources>

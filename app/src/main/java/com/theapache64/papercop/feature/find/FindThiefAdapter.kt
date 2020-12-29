@@ -23,7 +23,7 @@ class FindThiefAdapter(
         val shouldSwitchPoliceThiefPoints: Boolean
     )
 
-    private val keyList = rolesMap.keys.toList()
+    val keyList = rolesMap.keys.toList()
     var state = State(false, false)
 
     private val inflater by lazy {

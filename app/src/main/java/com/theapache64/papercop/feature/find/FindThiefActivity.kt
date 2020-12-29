@@ -2,9 +2,11 @@ package com.theapache64.papercop.feature.find
 
 
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.media.MediaPlayer
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import com.theapache64.papercop.R
 import com.theapache64.papercop.core.Director
 import com.theapache64.papercop.data.local.entities.players.PlayerEntity
@@ -12,6 +14,7 @@ import com.theapache64.papercop.databinding.ActivityFindThiefBinding
 import com.theapache64.papercop.feature.base.BaseActivity
 import com.theapache64.papercop.model.Role
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 
 @AndroidEntryPoint
 class FindThiefActivity :
@@ -93,6 +96,26 @@ class FindThiefActivity :
             if (it) {
                 finish()
             }
+        })
+
+        viewModel.showConfirmDialog.observe(this, { thiefPosition ->
+            val thief = adapter!!.keyList[thiefPosition]
+            val dialog = AlertDialog.Builder(this)
+                .setTitle(R.string.find_dialog_confirm_title)
+                .setMessage(
+                    getString(
+                        R.string.find_dialog_confirm_message, thief.name.toLowerCase(
+                            Locale.getDefault()
+                        )
+                    )
+                )
+                .setPositiveButton(R.string.action_yes) { _: DialogInterface, _: Int ->
+                    viewModel.onThiefConfirmed(thiefPosition)
+                }
+                .setNegativeButton(R.string.action_no) { dialog: DialogInterface, _: Int ->
+                }.create()
+
+            dialog.show()
         })
     }
 

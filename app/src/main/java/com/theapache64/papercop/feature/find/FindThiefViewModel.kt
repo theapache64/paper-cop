@@ -10,6 +10,7 @@ import com.theapache64.papercop.data.local.entities.players.PlayerEntity
 import com.theapache64.papercop.data.repo.PlayersRepo
 import com.theapache64.papercop.feature.base.BaseViewModel
 import com.theapache64.papercop.model.Role
+import com.theapache64.papercop.utils.livedata.SingleLiveEvent
 import kotlinx.coroutines.launch
 import java.util.*
 
@@ -37,6 +38,9 @@ class FindThiefViewModel @ViewModelInject constructor(
     private val _shouldFinishFind = MutableLiveData<Boolean>()
     val shouldFinishFind: LiveData<Boolean> = _shouldFinishFind
 
+    private val _showConfirmDialog = SingleLiveEvent<Int>()
+    val showConfirmDialog: LiveData<Int> = _showConfirmDialog
+
     fun init(rolesMap: HashMap<PlayerEntity, Role>) {
         _rolesMap.value = rolesMap
         players = rolesMap.keys.toList()
@@ -47,6 +51,11 @@ class FindThiefViewModel @ViewModelInject constructor(
     }
 
     fun onItemClicked(position: Int) {
+        _showConfirmDialog.value = position
+    }
+
+    fun onThiefConfirmed(position: Int) {
+
         _rolesMap.value?.let { rolesMap ->
             val player = players[position]
             val role = rolesMap[player]!!
