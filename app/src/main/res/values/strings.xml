@@ -14,4 +14,5 @@
     <string name="find_correct">Correct 🎊</string>
     <string name="find_incorrect">Incorrect ❌</string>
     <string name="find_thief_error_self">That\'s YOU!</string>
+    <string name="msg_tap_twice_to_exit">Tap again to exit</string>
 </resources>
