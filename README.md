@@ -1,12 +1,13 @@
-# Paper Cop 👮
+# Paper Cop 👮 
 
-The "Raja Chor Mantri Sipahi" (aka "Kallanum Polisum" 😂) game android-ized.
+The "[Raja Chor Mantri Sipahi](https://en.wikipedia.org/wiki/Raja_Chor_Mantri_Sipahi) 🇮🇳" (aka "Kallanum Polisum" 😂) game android-ized.
 
 > Save Paper 📖, Save Trees 🌲, Save the World! 🗺️ 😜
 
 ## Download 📥
 
-- [Download APK](https://github.com/theapache64/paper-cop/releases/latest/download/app-release.apk)
+<a href="https://play.google.com/store/apps/details?id=com.theapache64.papercop"><img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" width="200px"/></a>
+
 
 ## Screenshots 📱
 
