@@ -1,6 +1,7 @@
 package com.theapache64.papercop.widget
 
 import android.content.Context
+import android.graphics.Color
 import android.media.MediaPlayer
 import android.util.AttributeSet
 import android.view.Gravity
