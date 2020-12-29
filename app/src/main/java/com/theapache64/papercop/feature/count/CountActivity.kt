@@ -3,8 +3,10 @@ package com.theapache64.papercop.feature.count
 import android.content.Context
 import android.content.Intent
 import android.media.MediaPlayer
+import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.theapache64.papercop.R
 import com.theapache64.papercop.databinding.ActivityCountBinding
 import com.theapache64.papercop.feature.base.BaseActivity
@@ -20,6 +22,10 @@ class CountActivity : BaseActivity<ActivityCountBinding, CountViewModel>(R.layou
                 // data goes here
             }
         }
+    }
+
+    private val analytics by lazy {
+        FirebaseAnalytics.getInstance(this)
     }
 
     private val clickSound by lazy {
@@ -39,6 +45,10 @@ class CountActivity : BaseActivity<ActivityCountBinding, CountViewModel>(R.layou
         binding.lifecycleOwner = this
 
         viewModel.launchNamesScreen.observe(this, { count ->
+            val analyticsData = Bundle().apply {
+                putInt("count", count)
+            }
+            analytics.logEvent("player_count", analyticsData)
             startActivity(InputPlayersActivity.getStartIntent(this, count))
         })
 

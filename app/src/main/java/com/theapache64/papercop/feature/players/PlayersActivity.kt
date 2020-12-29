@@ -7,6 +7,7 @@ import android.os.Handler
 import android.os.Looper
 import androidx.activity.viewModels
 import androidx.core.os.postDelayed
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.theapache64.papercop.R
 import com.theapache64.papercop.databinding.ActivityPlayersBinding
 import com.theapache64.papercop.feature.base.BaseActivity
@@ -28,11 +29,16 @@ class PlayersActivity :
         }
     }
 
+    private val analytics by lazy {
+        FirebaseAnalytics.getInstance(this)
+    }
+
+
     override fun onCreate() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
-        // Rending players
+        // Rendering players
         viewModel.players.observe(this, { players ->
             val adapter = PlayersAdapter(
                 this,
@@ -46,6 +52,7 @@ class PlayersActivity :
         // Watching for pick activity
         viewModel.shouldGoToPickActivity.observe(this, {
             if (it) {
+                analytics.logEvent("start_round", null)
                 startActivity(PickActivity.getStartIntent(this))
             }
         })
